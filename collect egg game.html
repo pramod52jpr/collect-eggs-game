@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+    <title>collecting eggs Game</title>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-image: url("hen-bg.jpg");
+            background-size: 100% 100%;
+        }
+
+        .wood {
+            width: 1372px;
+            height: 40px;
+            background-image: url("wood.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 140px;
+            left: -6px;
+        }
+/* score section */
+        .scoring
+        {
+            display: inline-block;
+            border: 5px dotted skyblue;
+            font-family: backslash;
+            font-weight: bold;
+            font-size: 30px;
+            box-shadow :2px 2px 10px 5px skyblue inset;
+            color: white;
+            background: black;
+            position: absolute;
+            left: 200px;
+            padding: 0 20px;
+            top: 10px;
+        }
+        .lifeline
+        {
+            display: inline-block;
+            border: 5px dotted skyblue;
+            font-family: backslash;
+            font-weight: bold;
+            font-size: 30px;
+            box-shadow :2px 2px 10px 5px skyblue inset;
+            color: white;
+            background: black;
+            position: absolute;
+            left: 800px;
+            padding: 0 20px;
+            top: 10px;
+        }
+
+/* first han,nest and egg section */
+        .hen1 {
+            background-image: url("hen.png");
+            height: 100px;
+            width: 100px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 75px;
+            left: 25%;
+        }
+
+        .animate-egg1 {
+            background-image: url("egg.png");
+            width: 20px;
+            height: 25px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 150px;
+            left: 28%;
+            animation: egg1 3s linear 0s infinite;
+        }
+
+        @keyframes egg1 {
+            from {
+                top: 150px;
+            }
+
+            to {
+                top: 600px;
+            }
+        }
+
+        .broken-egg1
+        {
+            height: 30px;
+            width: 40px;
+            background-image: url("broken-egg.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 610px;
+            left: 27%;
+            visibility: hidden;
+        }
+/* second han,nest and egg section */
+        .hen2 {
+            background-image: url("hen.png");
+            height: 100px;
+            width: 100px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 75px;
+            left: 50%;
+        }
+
+        .animate-egg2 {
+            background-image: url("egg.png");
+            width: 20px;
+            height: 25px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 150px;
+            left: 53%;
+            animation: egg2 3s linear 1s infinite;
+        }
+
+        @keyframes egg2 {
+            from {
+                top: 150px;
+            }
+
+            to {
+                top: 600px;
+            }
+        }
+        .broken-egg2
+        {
+            height: 30px;
+            width: 40px;
+            background-image: url("broken-egg.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 610px;
+            left: 52%;
+            visibility: hidden;
+        }
+
+/* third han,nest and egg section */
+        .hen3 {
+            background-image: url("hen.png");
+            height: 100px;
+            width: 100px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 75px;
+            left: 75%;
+        }
+
+        .animate-egg3 {
+            background-image: url("egg.png");
+            width: 20px;
+            height: 25px;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 150px;
+            left: 78%;
+            animation: egg3 3s linear 2s infinite;
+        }
+
+        @keyframes egg3 {
+            from {
+                top: 150px;
+            }
+
+            to {
+                top: 600px;
+            }
+        }
+        .broken-egg3
+        {
+            height: 30px;
+            width: 40px;
+            background-image: url("broken-egg.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 610px;
+            left: 77%;
+            visibility: hidden;
+        }
+/* bucket section */
+        .bucket {
+            height: 100px;
+            width: 100px;
+            background-image: url("bucket.png");
+            background-size: 100% 100%;
+            position: absolute;
+            top: 550px;
+            left: 200px;
+        }
+/* gameover section */
+.gameover
+{
+    font-size: 80px;
+    text-shadow: 3px 3px 2px yellow,-3px -3px 2px yellow,3px -3px 2px yellow,-3px 3px 2px yellow;
+    color: rgb(17, 139, 187);
+    position: absolute;
+    top: 200px;
+    left: 35%;
+    font-weight: bold;
+    font-family: backslash;
+    visibility: hidden;
+}
+/* start section */
+.start
+{
+    font-size: 60px;
+    text-shadow: 3px 3px 2px yellow,-3px -3px 2px yellow,3px -3px 2px yellow,-3px 3px 2px yellow;
+    color: rgb(17, 139, 187);
+    position: absolute;
+    top: 200px;
+    left: 10%;
+    font-weight: bold;
+    font-family: backslash;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+      
+        <div class="scoring">
+            <span class="yourscore">Your Score : </span>
+            <span class="score">0</span>
+        </div> 
+        <div class="lifeline">
+            <span class="label">lifeline : </span>
+            <span class="life">20</span>
+        </div> 
+        <div class="wood"></div>
+        <div class="bucket"></div>
+        <div class="start">Collect Egg - Made By Pramod</div>
+        <div class="egg1"></div>
+        <div class="hen1"></div>
+        <div class="broken-egg1"></div>
+        <div class="egg2"></div>
+        <div class="hen2"></div>
+        <div class="broken-egg2"></div>
+        <div class="egg3"></div>
+        <div class="hen3"></div>
+        <div class="broken-egg3"></div>
+        <div class="gameover">GAME OVER</div>
+    </div>
+    <script>
+        var song=new Audio("Into-Your-Arms.mp3");
+        var collect=new Audio("collect-egg.mp3");
+        var broken=new Audio("broken-egg.mp3");
+        
+        setTimeout(()=>{
+            song.play();
+        },2000);
+        document.getElementsByClassName("egg1")[0].classList.add("animate-egg1");
+
+        document.getElementsByClassName("egg2")[0].classList.add("animate-egg2");
+
+        document.getElementsByClassName("egg3")[0].classList.add("animate-egg3");
+
+        function animatebucket(e) {
+            // var a=e.clientX;
+            // document.getElementsByClassName("bucket")[0].style.left=(a-50)+"px";
+            var a = e.keyCode;
+            if(a==39)
+            {
+                var blv=parseInt(window.getComputedStyle(document.getElementsByClassName("bucket")[0]).left);
+                blv+=80;
+                document.getElementsByClassName("bucket")[0].style.left=blv+"px";
+            }
+            if(a==37)
+            {
+                var blv=parseInt(window.getComputedStyle(document.getElementsByClassName("bucket")[0]).left);
+                blv-=80;
+                document.getElementsByClassName("bucket")[0].style.left=blv+"px";
+            }
+            
+        }
+        window.addEventListener("keydown",animatebucket);
+        // window.addEventListener("mousemove",animatebucket);
+        setInterval(() => {
+            // bucket top,left and width
+            var bw = parseInt(window.getComputedStyle(document.getElementsByClassName("bucket")[0]).width) / 2;
+            var bt = parseInt(window.getComputedStyle(document.getElementsByClassName("bucket")[0]).top) + 10;
+            var bl = parseInt(window.getComputedStyle(document.getElementsByClassName("bucket")[0]).left) + bw;
+            // egg1 top,left,width and height
+            var e1w = parseInt(window.getComputedStyle(document.getElementsByClassName("egg1")[0]).width) / 2;
+            var e1h = parseInt(window.getComputedStyle(document.getElementsByClassName("egg1")[0]).height) / 2;
+            var e1t = parseInt(window.getComputedStyle(document.getElementsByClassName("egg1")[0]).top) + e1h;
+            var e1l = parseInt(window.getComputedStyle(document.getElementsByClassName("egg1")[0]).left) + e1w;
+            // egg2 top,left,width and height 
+            var e2w = parseInt(window.getComputedStyle(document.getElementsByClassName("egg2")[0]).width) / 2;
+            var e2h = parseInt(window.getComputedStyle(document.getElementsByClassName("egg2")[0]).height) / 2;
+            var e2t = parseInt(window.getComputedStyle(document.getElementsByClassName("egg2")[0]).top) + e2h;
+            var e2l = parseInt(window.getComputedStyle(document.getElementsByClassName("egg2")[0]).left) + e2w;
+            // egg3 top,left,width and height
+            var e3w = parseInt(window.getComputedStyle(document.getElementsByClassName("egg3")[0]).width) / 2;
+            var e3h = parseInt(window.getComputedStyle(document.getElementsByClassName("egg3")[0]).height) / 2;
+            var e3t = parseInt(window.getComputedStyle(document.getElementsByClassName("egg3")[0]).top) + e3h;
+            var e3l = parseInt(window.getComputedStyle(document.getElementsByClassName("egg3")[0]).left) + e3w;
+
+            var hd1 = Math.abs(bt - e1t);
+            var hd2 = Math.abs(bt - e2t);
+            var hd3 = Math.abs(bt - e3t);
+            var wd1 = Math.abs(bl - e1l);
+            var wd2 = Math.abs(bl - e2l);
+            var wd3 = Math.abs(bl - e3l);
+            
+            if (hd1 < (e1h + 5) && wd1 < e1w + bw)
+            {
+                var scr=document.getElementsByClassName("score")[0].innerText;
+                document.getElementsByClassName("score")[0].innerText=eval(scr+"+"+1);
+                
+                document.getElementsByClassName("egg1")[0].classList.remove("animate-egg1");
+                collect.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("egg1")[0].classList.add("animate-egg1");
+                    
+                },1);
+            }
+            if (hd2 < (e2h + 5) && wd2 < e2w + bw)
+            {
+                var scr=document.getElementsByClassName("score")[0].innerText;
+                document.getElementsByClassName("score")[0].innerText=eval(scr+"+"+1);
+                document.getElementsByClassName("egg2")[0].classList.remove("animate-egg2");
+                collect.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("egg2")[0].classList.add("animate-egg2");
+                },1);
+            }
+            if (hd3 < (e3h + 5) && wd3 < e3w + bw)
+            {
+                var scr=document.getElementsByClassName("score")[0].innerText;
+                document.getElementsByClassName("score")[0].innerText=eval(scr+"+"+1);
+                document.getElementsByClassName("egg3")[0].classList.remove("animate-egg3");
+                collect.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("egg3")[0].classList.add("animate-egg3");
+                },1);
+            }
+
+        // broken-egg Section
+            if(e1t>=600)
+            {
+                document.getElementsByClassName("broken-egg1")[0].style.visibility="visible";
+                broken.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("broken-egg1")[0].style.visibility="hidden";
+                },500);
+            }
+            if(e2t>=600)
+            {
+                document.getElementsByClassName("broken-egg2")[0].style.visibility="visible";
+                broken.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("broken-egg2")[0].style.visibility="hidden";
+                },500);
+            }
+            if(e3t>=600)
+            {
+                document.getElementsByClassName("broken-egg3")[0].style.visibility="visible";
+                broken.play();
+                setTimeout(()=>{
+                    document.getElementsByClassName("broken-egg3")[0].style.visibility="hidden";
+                },500);
+            }
+       }, 1);
+       setInterval(()=>{
+            var be1=window.getComputedStyle(document.getElementsByClassName("broken-egg1")[0]).visibility;
+            var be2=window.getComputedStyle(document.getElementsByClassName("broken-egg2")[0]).visibility;
+            var be3=window.getComputedStyle(document.getElementsByClassName("broken-egg3")[0]).visibility;
+            // console.log(be1);
+            if(be1 == "visible" || be2=="visible" || be3=="visible")
+            {
+                var life=document.getElementsByClassName("life")[0].innerText;
+                document.getElementsByClassName("life")[0].innerText=life-1;
+            }
+       },500);
+       setInterval(()=>{
+        var lifeline=document.getElementsByClassName("life")[0].innerText;
+        if(lifeline==0)
+        {
+            document.getElementsByClassName("gameover")[0].style.visibility="visible";
+            document.getElementsByClassName("egg1")[0].classList.remove("animate-egg1");
+            document.getElementsByClassName("egg2")[0].classList.remove("animate-egg2");
+            document.getElementsByClassName("egg3")[0].classList.remove("animate-egg3");
+            document.getElementsByClassName("start")[0].style.visibility="hidden";
+            song.pause();
+        }
+        },1);
+    </script>
+</body>
+
+</html>
